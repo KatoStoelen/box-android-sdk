@@ -20,11 +20,12 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
+import android.view.ViewGroup.LayoutParams;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.LinearLayout;
 
 import com.box.androidlib.Box;
-import com.box.androidlib.R;
 import com.box.androidlib.DAO.User;
 import com.box.androidlib.ResponseListeners.GetAuthTokenListener;
 import com.box.androidlib.ResponseListeners.GetTicketListener;
@@ -84,14 +85,20 @@ public class BoxAuthentication extends Activity {
             return;
         }
 
-        setContentView(R.layout.box_authentication);
+        // Fix to package SDK as JAR.
+        LinearLayout layout = new LinearLayout(this);
+        layout.setOrientation(LinearLayout.VERTICAL);
+        layout.setLayoutParams(new LayoutParams(LayoutParams.FILL_PARENT, LayoutParams.FILL_PARENT));
+        mLoginWebView = new WebView(this);
+        mLoginWebView.setLayoutParams(new LayoutParams(LayoutParams.FILL_PARENT, LayoutParams.FILL_PARENT));
+        layout.addView(mLoginWebView);
+        setContentView(layout);
 
         // Get a ticket. We need a ticket in order to load the login webpage.
         // Once we have a ticket, launch a login webview.
         box = Box.getInstance(mApiKey);
         box.getTicket(new GetTicketListener() {
 
-            @Override
             public void onComplete(final String ticket, final String status) {
                 if (status.equals("get_ticket_ok")) {
                     loadLoginWebview(ticket);
@@ -101,7 +108,6 @@ public class BoxAuthentication extends Activity {
                 }
             }
 
-            @Override
             public void onIOException(final IOException e) {
                 onGetTicketFail();
             }
@@ -118,7 +124,6 @@ public class BoxAuthentication extends Activity {
         // Load the login webpage. Note how the ticket must be appended to the
         // login url.
         String loginUrl = BoxConstants.LOGIN_URL + ticket;
-        mLoginWebView = (WebView) findViewById(R.id.loginWebView);
         mLoginWebView.setScrollBarStyle(View.SCROLLBARS_INSIDE_OVERLAY);
         mLoginWebView.getSettings().setJavaScriptEnabled(true);
         mLoginWebView.setWebViewClient(new WebViewClient() {
@@ -172,7 +177,6 @@ public class BoxAuthentication extends Activity {
         final Handler handler = new Handler();
         box.getAuthToken(ticket, new GetAuthTokenListener() {
 
-            @Override
             public void onComplete(final User user, final String status) {
                 if (status.equals("get_auth_token_ok") && user != null) {
                     onAuthTokenRetreived(user.getAuthToken());
@@ -180,7 +184,6 @@ public class BoxAuthentication extends Activity {
                 else if (status.equals("error_unknown_http_response_code")) {
                     handler.postDelayed(new Runnable() {
 
-                        @Override
                         public void run() {
                             getAuthToken(ticket, tries + 1);
                         }
@@ -188,7 +191,6 @@ public class BoxAuthentication extends Activity {
                 }
             }
 
-            @Override
             public void onIOException(final IOException e) {
             }
         });

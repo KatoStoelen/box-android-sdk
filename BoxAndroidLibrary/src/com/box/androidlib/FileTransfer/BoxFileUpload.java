@@ -160,11 +160,9 @@ public class BoxFileUpload {
         if (mListener != null && mHandler != null) {
             reqEntity.setProgressListener(new MultipartEntityWithProgressListener.ProgressListener() {
 
-                @Override
                 public void onTransferred(final long bytesTransferredCumulative) {
                     mHandler.post(new Runnable() {
 
-                        @Override
                         public void run() {
                             mListener.onProgress(bytesTransferredCumulative);
                         }

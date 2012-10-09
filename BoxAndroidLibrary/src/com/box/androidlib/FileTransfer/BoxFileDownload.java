@@ -107,7 +107,6 @@ public class BoxFileDownload {
         mHandler = handler;
         mOnProgressRunnable = new Runnable() {
 
-            @Override
             public void run() {
                 mListener.onProgress(mBytesTransferred);
             }
