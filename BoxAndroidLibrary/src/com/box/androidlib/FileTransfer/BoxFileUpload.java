@@ -341,7 +341,9 @@ public class BoxFileUpload {
                 mCountingOutputStream = new CountingOutputStream(outstream, mListener);
             }
             super.writeTo(mCountingOutputStream);
-            mListener.onTransferred(mCountingOutputStream.getBytesTransferred());
+            
+            if (mListener != null)
+            	mListener.onTransferred(mCountingOutputStream.getBytesTransferred());
         }
 
         /**
