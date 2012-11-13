@@ -105,12 +105,15 @@ public class BoxFileDownload {
     public void setListener(final FileDownloadListener listener, final Handler handler) {
         mListener = listener;
         mHandler = handler;
-        mOnProgressRunnable = new Runnable() {
+        
+        if (mListener != null) {
+			mOnProgressRunnable = new Runnable() {
 
-            public void run() {
-                mListener.onProgress(mBytesTransferred);
-            }
-        };
+				public void run() {
+					mListener.onProgress(mBytesTransferred);
+				}
+			};
+		}
     }
 
     /**
@@ -219,7 +222,8 @@ public class BoxFileDownload {
                             mHandler.post(mOnProgressRunnable);
                         }
                     }
-                    mHandler.post(mOnProgressRunnable);
+                    if (mHandler != null)
+                    	mHandler.post(mOnProgressRunnable);
                 }
                 for (int i = 0; i < destinationOutputStreams.length; i++) {
                     destinationOutputStreams[i].close();
