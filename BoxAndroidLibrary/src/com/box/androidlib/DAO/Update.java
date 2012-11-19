@@ -21,6 +21,13 @@ import com.box.androidlib.Utils.BoxUtils;
  * @author developers@box.net
  */
 public class Update extends DAO {
+	
+	/** Indicates that the file has been updated. */
+	public static final String UPDATE_FILE_UPDATED = "updated";
+	/** Indicates that the file has been added. */
+	public static final String UPDATE_FILE_ADDED = "added";
+	/** Indicates that the file has been deleted. (???) */
+	public static final String UPDATE_FILE_DELETED = "deleted";
 
     /**
      * Serialialization version id.
