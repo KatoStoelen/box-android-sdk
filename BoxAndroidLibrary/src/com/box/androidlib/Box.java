@@ -1470,7 +1470,6 @@ public class Box {
                     final ItemRolesParser parser = BoxSynchronous.getInstance(mApiKey).getItemRolesForItem(authToken, type, targetId);
                     mHandler.post(new Runnable() {
 
-                        @Override
                         public void run() {
                             listener.onComplete(parser.getItemRoles(), parser.getStatus());
                         }
@@ -1479,7 +1478,6 @@ public class Box {
                 catch (final IOException e) {
                     mHandler.post(new Runnable() {
 
-                        @Override
                         public void run() {
                             listener.onIOException(e);
                         }

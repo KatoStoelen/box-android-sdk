@@ -886,7 +886,7 @@ public class BoxSynchronous {
      *            An array of parameters. TODO missing documentation for this. Set as null for now.
      * @return the status code returned from Box API
      * @throws IOException
-     *             Can be thrown if there is no connection, or if some other connection problem exists.
+     *             Can be thrown if there is no connection, or if some other connection problem exists. 
      */
     public String inviteCollaborators(final String authToken, final String type, final long targetId, final long[] userIds, final String[] emails,
         final String itemRoleName, final boolean resendInvite, final boolean noEmail, final String[] params) throws IOException {
