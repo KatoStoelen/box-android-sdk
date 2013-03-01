@@ -318,6 +318,7 @@ public class Box {
                     final TicketResponseParser response = BoxSynchronous.getInstance(mApiKey).getTicket();
                     mHandler.post(new Runnable() {
 
+                        @Override
                         public void run() {
                             listener.onComplete(response.getTicket(), response.getStatus());
                         }
@@ -326,6 +327,7 @@ public class Box {
                 catch (final IOException e) {
                     mHandler.post(new Runnable() {
 
+                        @Override
                         public void run() {
                             listener.onIOException(e);
                         }
@@ -355,6 +357,7 @@ public class Box {
                     final UserResponseParser response = BoxSynchronous.getInstance(mApiKey).getAuthToken(ticket);
                     mHandler.post(new Runnable() {
 
+                        @Override
                         public void run() {
                             listener.onComplete(response.getUser(), response.getStatus());
                         }
@@ -363,6 +366,7 @@ public class Box {
                 catch (final IOException e) {
                     mHandler.post(new Runnable() {
 
+                        @Override
                         public void run() {
                             listener.onIOException(e);
                         }
@@ -391,6 +395,7 @@ public class Box {
                     final UserResponseParser response = BoxSynchronous.getInstance(mApiKey).getAccountInfo(authToken);
                     mHandler.post(new Runnable() {
 
+                        @Override
                         public void run() {
                             listener.onComplete(response.getUser(), response.getStatus());
                         }
@@ -399,6 +404,7 @@ public class Box {
                 catch (final IOException e) {
                     mHandler.post(new Runnable() {
 
+                        @Override
                         public void run() {
                             listener.onIOException(e);
                         }
@@ -427,6 +433,7 @@ public class Box {
                     final String status = BoxSynchronous.getInstance(mApiKey).logout(authToken);
                     mHandler.post(new Runnable() {
 
+                        @Override
                         public void run() {
                             listener.onComplete(status);
                         }
@@ -435,6 +442,7 @@ public class Box {
                 catch (final IOException e) {
                     mHandler.post(new Runnable() {
 
+                        @Override
                         public void run() {
                             listener.onIOException(e);
                         }
@@ -465,6 +473,7 @@ public class Box {
                     final UserResponseParser response = BoxSynchronous.getInstance(mApiKey).registerNewUser(username, password);
                     mHandler.post(new Runnable() {
 
+                        @Override
                         public void run() {
                             listener.onComplete(response.getUser(), response.getStatus());
                         }
@@ -473,6 +482,7 @@ public class Box {
                 catch (final IOException e) {
                     mHandler.post(new Runnable() {
 
+                        @Override
                         public void run() {
                             listener.onIOException(e);
                         }
@@ -501,6 +511,7 @@ public class Box {
                     final String status = BoxSynchronous.getInstance(mApiKey).verifyRegistrationEmail(email);
                     mHandler.post(new Runnable() {
 
+                        @Override
                         public void run() {
                             listener.onComplete(status);
                         }
@@ -509,6 +520,7 @@ public class Box {
                 catch (final IOException e) {
                     mHandler.post(new Runnable() {
 
+                        @Override
                         public void run() {
                             listener.onIOException(e);
                         }
@@ -542,6 +554,7 @@ public class Box {
                     final AccountTreeResponseParser response = BoxSynchronous.getInstance(mApiKey).getAccountTree(authToken, folderId, params);
                     mHandler.post(new Runnable() {
 
+                        @Override
                         public void run() {
                             listener.onComplete(response.getFolder(), response.getStatus());
                         }
@@ -550,6 +563,7 @@ public class Box {
                 catch (final IOException e) {
                     mHandler.post(new Runnable() {
 
+                        @Override
                         public void run() {
                             listener.onIOException(e);
                         }
@@ -580,6 +594,7 @@ public class Box {
                     final FileResponseParser response = BoxSynchronous.getInstance(mApiKey).getFileInfo(authToken, fileId);
                     mHandler.post(new Runnable() {
 
+                        @Override
                         public void run() {
                             listener.onComplete(response.getFile(), response.getStatus());
                         }
@@ -588,6 +603,7 @@ public class Box {
                 catch (final IOException e) {
                     mHandler.post(new Runnable() {
 
+                        @Override
                         public void run() {
                             listener.onIOException(e);
                         }
@@ -622,6 +638,7 @@ public class Box {
                     final FolderResponseParser response = BoxSynchronous.getInstance(mApiKey).createFolder(authToken, parentFolderId, folderName, share);
                     mHandler.post(new Runnable() {
 
+                        @Override
                         public void run() {
                             listener.onComplete(response.getFolder(), response.getStatus());
                         }
@@ -630,6 +647,7 @@ public class Box {
                 catch (final IOException e) {
                     mHandler.post(new Runnable() {
 
+                        @Override
                         public void run() {
                             listener.onIOException(e);
                         }
@@ -664,6 +682,7 @@ public class Box {
                     final String status = BoxSynchronous.getInstance(mApiKey).copy(authToken, type, targetId, destinationId);
                     mHandler.post(new Runnable() {
 
+                        @Override
                         public void run() {
                             listener.onComplete(status);
                         }
@@ -672,6 +691,7 @@ public class Box {
                 catch (final IOException e) {
                     mHandler.post(new Runnable() {
 
+                        @Override
                         public void run() {
                             listener.onIOException(e);
                         }
@@ -704,6 +724,7 @@ public class Box {
                     final String status = BoxSynchronous.getInstance(mApiKey).delete(authToken, type, targetId);
                     mHandler.post(new Runnable() {
 
+                        @Override
                         public void run() {
                             listener.onComplete(status);
                         }
@@ -712,6 +733,7 @@ public class Box {
                 catch (final IOException e) {
                     mHandler.post(new Runnable() {
 
+                        @Override
                         public void run() {
                             listener.onIOException(e);
                         }
@@ -746,6 +768,7 @@ public class Box {
                     final String status = BoxSynchronous.getInstance(mApiKey).move(authToken, type, targetId, destinationId);
                     mHandler.post(new Runnable() {
 
+                        @Override
                         public void run() {
                             listener.onComplete(status);
                         }
@@ -754,6 +777,7 @@ public class Box {
                 catch (final IOException e) {
                     mHandler.post(new Runnable() {
 
+                        @Override
                         public void run() {
                             listener.onIOException(e);
                         }
@@ -788,6 +812,7 @@ public class Box {
                     final String status = BoxSynchronous.getInstance(mApiKey).rename(authToken, type, targetId, newName);
                     mHandler.post(new Runnable() {
 
+                        @Override
                         public void run() {
                             listener.onComplete(status);
                         }
@@ -796,6 +821,7 @@ public class Box {
                 catch (final IOException e) {
                     mHandler.post(new Runnable() {
 
+                        @Override
                         public void run() {
                             listener.onIOException(e);
                         }
@@ -838,6 +864,7 @@ public class Box {
                     final SearchResponseParser response = BoxSynchronous.getInstance(mApiKey).search(authToken, query, sort, page, perPage, direction, params);
                     mHandler.post(new Runnable() {
 
+                        @Override
                         public void run() {
                             listener.onComplete(response.getSearchResult(), response.getStatus());
                         }
@@ -846,6 +873,7 @@ public class Box {
                 catch (final IOException e) {
                     mHandler.post(new Runnable() {
 
+                        @Override
                         public void run() {
                             listener.onIOException(e);
                         }
@@ -880,6 +908,7 @@ public class Box {
                     final String status = BoxSynchronous.getInstance(mApiKey).addToTag(authToken, type, targetId, tagNames);
                     mHandler.post(new Runnable() {
 
+                        @Override
                         public void run() {
                             listener.onComplete(status);
                         }
@@ -888,6 +917,7 @@ public class Box {
                 catch (final IOException e) {
                     mHandler.post(new Runnable() {
 
+                        @Override
                         public void run() {
                             listener.onIOException(e);
                         }
@@ -920,6 +950,7 @@ public class Box {
                     final CommentsResponseParser response = BoxSynchronous.getInstance(mApiKey).getComments(authToken, type, targetId);
                     mHandler.post(new Runnable() {
 
+                        @Override
                         public void run() {
                             listener.onComplete(response.getComments(), response.getStatus());
                         }
@@ -928,6 +959,7 @@ public class Box {
                 catch (final IOException e) {
                     mHandler.post(new Runnable() {
 
+                        @Override
                         public void run() {
                             listener.onIOException(e);
                         }
@@ -962,6 +994,7 @@ public class Box {
                     final CommentResponseParser response = BoxSynchronous.getInstance(mApiKey).addComment(authToken, type, targetId, message);
                     mHandler.post(new Runnable() {
 
+                        @Override
                         public void run() {
                             listener.onComplete(response.getComment(), response.getStatus());
                         }
@@ -970,6 +1003,7 @@ public class Box {
                 catch (final IOException e) {
                     mHandler.post(new Runnable() {
 
+                        @Override
                         public void run() {
                             listener.onIOException(e);
                         }
@@ -1000,6 +1034,7 @@ public class Box {
                     final String status = BoxSynchronous.getInstance(mApiKey).deleteComment(authToken, commentId);
                     mHandler.post(new Runnable() {
 
+                        @Override
                         public void run() {
                             listener.onComplete(status);
                         }
@@ -1008,6 +1043,7 @@ public class Box {
                 catch (final IOException e) {
                     mHandler.post(new Runnable() {
 
+                        @Override
                         public void run() {
                             listener.onIOException(e);
                         }
@@ -1036,6 +1072,7 @@ public class Box {
                     final TagsResponseParser response = BoxSynchronous.getInstance(mApiKey).exportTags(authToken);
                     mHandler.post(new Runnable() {
 
+                        @Override
                         public void run() {
                             listener.onComplete(response.getTags(), response.getStatus());
                         }
@@ -1044,6 +1081,7 @@ public class Box {
                 catch (final IOException e) {
                     mHandler.post(new Runnable() {
 
+                        @Override
                         public void run() {
                             listener.onIOException(e);
                         }
@@ -1079,6 +1117,7 @@ public class Box {
                     final UpdatesResponseParser response = BoxSynchronous.getInstance(mApiKey).getUpdates(authToken, beginTimeStamp, endTimeStamp, params);
                     mHandler.post(new Runnable() {
 
+                        @Override
                         public void run() {
                             listener.onComplete(response.getUpdates(), response.getStatus());
                         }
@@ -1087,6 +1126,7 @@ public class Box {
                 catch (final IOException e) {
                     mHandler.post(new Runnable() {
 
+                        @Override
                         public void run() {
                             listener.onIOException(e);
                         }
@@ -1119,6 +1159,7 @@ public class Box {
                     final ToggleFolderEmailResponseParser response = BoxSynchronous.getInstance(mApiKey).toggleFolderEmail(authToken, folderId, enable);
                     mHandler.post(new Runnable() {
 
+                        @Override
                         public void run() {
                             listener.onComplete(response.getUploadEmail(), response.getStatus());
                         }
@@ -1127,6 +1168,7 @@ public class Box {
                 catch (final IOException e) {
                     mHandler.post(new Runnable() {
 
+                        @Override
                         public void run() {
                             listener.onIOException(e);
                         }
@@ -1159,6 +1201,7 @@ public class Box {
                     final VersionsResponseParser response = BoxSynchronous.getInstance(mApiKey).getVersions(authToken, type, targetId);
                     mHandler.post(new Runnable() {
 
+                        @Override
                         public void run() {
                             listener.onComplete(response.getVersions(), response.getStatus());
                         }
@@ -1167,6 +1210,7 @@ public class Box {
                 catch (final IOException e) {
                     mHandler.post(new Runnable() {
 
+                        @Override
                         public void run() {
                             listener.onIOException(e);
                         }
@@ -1197,6 +1241,7 @@ public class Box {
                     final VersionsResponseParser response = BoxSynchronous.getInstance(mApiKey).makeCurrentVersion(authToken, versionId);
                     mHandler.post(new Runnable() {
 
+                        @Override
                         public void run() {
                             listener.onComplete(response.getVersions(), response.getStatus());
                         }
@@ -1205,6 +1250,7 @@ public class Box {
                 catch (final IOException e) {
                     mHandler.post(new Runnable() {
 
+                        @Override
                         public void run() {
                             listener.onIOException(e);
                         }
@@ -1240,6 +1286,7 @@ public class Box {
                     final String status = BoxSynchronous.getInstance(mApiKey).setDescription(authToken, type, targetId, description);
                     mHandler.post(new Runnable() {
 
+                        @Override
                         public void run() {
                             listener.onComplete(status);
                         }
@@ -1248,6 +1295,7 @@ public class Box {
                 catch (final IOException e) {
                     mHandler.post(new Runnable() {
 
+                        @Override
                         public void run() {
                             listener.onIOException(e);
                         }
@@ -1288,6 +1336,7 @@ public class Box {
                         emails);
                     mHandler.post(new Runnable() {
 
+                        @Override
                         public void run() {
                             listener.onComplete(response.getPublicName(), response.getStatus());
                         }
@@ -1296,6 +1345,7 @@ public class Box {
                 catch (final IOException e) {
                     mHandler.post(new Runnable() {
 
+                        @Override
                         public void run() {
                             listener.onIOException(e);
                         }
@@ -1328,6 +1378,7 @@ public class Box {
                     final String status = BoxSynchronous.getInstance(mApiKey).publicUnshare(authToken, type, targetId);
                     mHandler.post(new Runnable() {
 
+                        @Override
                         public void run() {
                             listener.onComplete(status);
                         }
@@ -1336,6 +1387,7 @@ public class Box {
                 catch (final IOException e) {
                     mHandler.post(new Runnable() {
 
+                        @Override
                         public void run() {
                             listener.onIOException(e);
                         }
@@ -1375,6 +1427,7 @@ public class Box {
                     final String status = BoxSynchronous.getInstance(mApiKey).privateShare(authToken, type, targetId, message, emails, notify);
                     mHandler.post(new Runnable() {
 
+                        @Override
                         public void run() {
                             listener.onComplete(status);
                         }
@@ -1383,6 +1436,7 @@ public class Box {
                 catch (final IOException e) {
                     mHandler.post(new Runnable() {
 
+                        @Override
                         public void run() {
                             listener.onIOException(e);
                         }
@@ -1429,6 +1483,7 @@ public class Box {
                         resendInvite, noEmail, params);
                     mHandler.post(new Runnable() {
 
+                        @Override
                         public void run() {
                             listener.onComplete(status);
                         }
@@ -1437,6 +1492,7 @@ public class Box {
                 catch (final IOException e) {
                     mHandler.post(new Runnable() {
 
+                        @Override
                         public void run() {
                             listener.onIOException(e);
                         }
@@ -1470,6 +1526,7 @@ public class Box {
                     final ItemRolesParser parser = BoxSynchronous.getInstance(mApiKey).getItemRolesForItem(authToken, type, targetId);
                     mHandler.post(new Runnable() {
 
+                        @Override
                         public void run() {
                             listener.onComplete(parser.getItemRoles(), parser.getStatus());
                         }
@@ -1478,6 +1535,7 @@ public class Box {
                 catch (final IOException e) {
                     mHandler.post(new Runnable() {
 
+                        @Override
                         public void run() {
                             listener.onIOException(e);
                         }
@@ -1509,6 +1567,7 @@ public class Box {
                     final CollaborationsResponseParser parser = BoxSynchronous.getInstance(mApiKey).getCollaborations(authToken, type, targetId);
                     mHandler.post(new Runnable() {
 
+                        @Override
                         public void run() {
                             listener.onComplete(parser.getCollaborations(), parser.getStatus());
                         }
@@ -1517,6 +1576,7 @@ public class Box {
                 catch (final IOException e) {
                     mHandler.post(new Runnable() {
 
+                        @Override
                         public void run() {
                             listener.onIOException(e);
                         }
@@ -1555,6 +1615,7 @@ public class Box {
                     final String status = BoxSynchronous.getInstance(mApiKey).addToMyBox(authToken, fileId, publicName, folderId, tags);
                     mHandler.post(new Runnable() {
 
+                        @Override
                         public void run() {
                             listener.onComplete(status);
                         }
@@ -1563,6 +1624,7 @@ public class Box {
                 catch (final IOException e) {
                     mHandler.post(new Runnable() {
 
+                        @Override
                         public void run() {
                             listener.onIOException(e);
                         }
@@ -1635,6 +1697,7 @@ public class Box {
                         listener, mHandler);
                     mHandler.post(new Runnable() {
 
+                        @Override
                         public void run() {
                             listener.onComplete(response.getStatus());
                         }
@@ -1643,6 +1706,7 @@ public class Box {
                 catch (final IOException e) {
                     mHandler.post(new Runnable() {
 
+                        @Override
                         public void run() {
                             listener.onIOException(e);
                         }
@@ -1654,6 +1718,7 @@ public class Box {
 
         Cancelable cancelable = new Cancelable() {
 
+            @Override
             public boolean cancel() {
                 if (thread.isAlive()) {
                     thread.interrupt();
@@ -1697,6 +1762,7 @@ public class Box {
                         listener, mHandler);
                     mHandler.post(new Runnable() {
 
+                        @Override
                         public void run() {
                             listener.onComplete(response.getStatus());
                         }
@@ -1705,6 +1771,7 @@ public class Box {
                 catch (final IOException e) {
                     mHandler.post(new Runnable() {
 
+                        @Override
                         public void run() {
                             listener.onIOException(e);
                         }
@@ -1716,6 +1783,7 @@ public class Box {
 
         Cancelable cancelable = new Cancelable() {
 
+            @Override
             public boolean cancel() {
                 if (thread.isAlive()) {
                     thread.interrupt();
@@ -1762,6 +1830,7 @@ public class Box {
                         mHandler);
                     mHandler.post(new Runnable() {
 
+                        @Override
                         public void run() {
                             listener.onComplete(response.getFile(), response.getStatus());
                         }
@@ -1770,6 +1839,7 @@ public class Box {
                 catch (final FileNotFoundException e) {
                     mHandler.post(new Runnable() {
 
+                        @Override
                         public void run() {
                             listener.onFileNotFoundException(e);
                         }
@@ -1778,6 +1848,7 @@ public class Box {
                 catch (final MalformedURLException e) {
                     mHandler.post(new Runnable() {
 
+                        @Override
                         public void run() {
                             listener.onMalformedURLException(e);
                         }
@@ -1786,6 +1857,7 @@ public class Box {
                 catch (final IOException e) {
                     mHandler.post(new Runnable() {
 
+                        @Override
                         public void run() {
                             listener.onIOException(e);
                         }
@@ -1797,6 +1869,7 @@ public class Box {
 
         Cancelable cancelable = new Cancelable() {
 
+            @Override
             public boolean cancel() {
                 if (thread.isAlive()) {
                     thread.interrupt();
@@ -1843,6 +1916,7 @@ public class Box {
                         destinationId, listener, mHandler);
                     mHandler.post(new Runnable() {
 
+                        @Override
                         public void run() {
                             listener.onComplete(response.getFile(), response.getStatus());
                         }
@@ -1851,6 +1925,7 @@ public class Box {
                 catch (final FileNotFoundException e) {
                     mHandler.post(new Runnable() {
 
+                        @Override
                         public void run() {
                             listener.onFileNotFoundException(e);
                         }
@@ -1859,6 +1934,7 @@ public class Box {
                 catch (final MalformedURLException e) {
                     mHandler.post(new Runnable() {
 
+                        @Override
                         public void run() {
                             listener.onMalformedURLException(e);
                         }
@@ -1867,6 +1943,7 @@ public class Box {
                 catch (final IOException e) {
                     mHandler.post(new Runnable() {
 
+                        @Override
                         public void run() {
                             listener.onIOException(e);
                         }
@@ -1878,6 +1955,7 @@ public class Box {
 
         Cancelable cancelable = new Cancelable() {
 
+            @Override
             public boolean cancel() {
                 if (thread.isAlive()) {
                     thread.interrupt();

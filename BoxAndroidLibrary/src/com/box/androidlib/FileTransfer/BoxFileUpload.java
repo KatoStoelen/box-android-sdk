@@ -170,11 +170,14 @@ public class BoxFileUpload {
         if (mListener != null && mHandler != null) {
             reqEntity.setProgressListener(new MultipartEntityWithProgressListener.ProgressListener() {
 
+                @Override
                 public void onTransferred(final long bytesTransferredCumulative) {
                     mHandler.post(new Runnable() {
 
+                        @Override
                         public void run() {
-                            mListener.onProgress(bytesTransferredCumulative);
+                        	if (mListener != null)
+                        		mListener.onProgress(bytesTransferredCumulative);
                         }
                     });
                 }
@@ -351,9 +354,7 @@ public class BoxFileUpload {
                 mCountingOutputStream = new CountingOutputStream(outstream, mListener);
             }
             super.writeTo(mCountingOutputStream);
-            
-            if (mListener != null)
-            	mListener.onTransferred(mCountingOutputStream.getBytesTransferred());
+            mListener.onTransferred(mCountingOutputStream.getBytesTransferred());
         }
 
         /**

@@ -61,10 +61,6 @@ public interface FileUploadListener extends ResponseListener {
      */
     String STATUS_INVALID_FILE_NAME = "upload_invalid_file_name";
     /**
-     * If operation was not successful. The file to be overwritten is deleted. 
-     */
-    String STATUS_FILE_DELETED = "e_file_deleted";
-    /**
      * If the upload was canceled.
      */
     String STATUS_CANCELLED = "upload_cancelled";
